@@ -1,0 +1,4 @@
+{
+  "name": "message",
+  "main": "./router.js"
+}
