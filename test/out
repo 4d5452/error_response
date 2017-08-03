@@ -4,11 +4,11 @@ Hello 127.0.0.1
 -------------------------
 Sending bad json object
 
-"Unexpected token = in JSON at position 7"
+Unexpected token = in JSON at position 7
 -------------------------
 Causing 'Unexpected end of JSON input' during request with curl
 
-"Unexpected end of JSON input"
+Unexpected end of JSON input
 -------------------------
 Sending request without 'name, email, or message' key(s)
 
@@ -16,33 +16,45 @@ Sending request without 'name, email, or message' key(s)
 -------------------------
 Sending request without 'email or message' key(s)
 
-{"name":[],"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}
+{"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}
 -------------------------
 Sending request without 'message' key(s)
 
-{"name":[],"email":[],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}
+{"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}
 -------------------------
 Sending request with name less than minLength (2)
 
-{"name":["name must have a minimum length of 2"],"email":[],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":[]}
+{"name":["name must have a minimum length of 2"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
 -------------------------
 Sending request with name greater than maxLength (24)
 
-{"name":["name must not exceed a maximum length of 24"],"email":[],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":[]}
+{"name":["name must not exceed a maximum length of 24"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
 -------------------------
 Sending request with name that fails regex
 
-{"name":["name is not valid"],"email":[],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":[]}
+{"name":["name is not valid"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
 -------------------------
 Sending request with name greater than maxLength and fails regex validation
 
-{"name":["name must not exceed a maximum length of 24","name is not valid"],"email":[],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":[]}
+{"name":["name must not exceed a maximum length of 24","name is not valid"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
 -------------------------
 Sending request with invalid objects at multiple levesl
 
-{"name":[],"email":[],"business":{"name":["name is required"],"address":{"street":["street must have a minimum length of 3"],"state":[]}},"message":[]}
+{"business":{"name":["name is required"],"address":{"street":["street must have a minimum length of 3"]}}}
+-------------------------
+Sending request without non-required key:value
+
+OK
+-------------------------
+Sending request with invalid non-required key:value
+
+{"business":{"position":["position must have a minimum length of 3"]}}
 -------------------------
 Sending valid json object
 
-{"name":[],"email":[],"business":{"name":[],"address":{"street":[],"state":[]}},"message":[]}
+OK
+-------------------------
+Sending valid json object with extra keys not supported
+
+OK
 -------------------------

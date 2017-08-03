@@ -59,9 +59,24 @@ DATA='{"name":"jack","email":"jack@jungle","message":"HI","business":{"address":
 curl -X POST --data "$DATA" ${HOST}/${END} --header ${HEADER}
 printf "\n-------------------------\n"
 
+printf "Sending request without non-required key:value\n\n"
+DATA='{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}'
+curl -X POST --data "$DATA" ${HOST}/${END} --header ${HEADER}
+printf "\n-------------------------\n"
+
+printf "Sending request with invalid non-required key:value\n\n"
+DATA='{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","position":"o","address":{"street":"Someplace USA","state":"VA"}}}'
+curl -X POST --data "$DATA" ${HOST}/${END} --header ${HEADER}
+printf "\n-------------------------\n"
+
 printf "Sending valid json object\n\n"
 DATA='{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}'
 curl -X POST --data "$DATA" ${HOST}/${END} --header ${HEADER}
 printf "\n-------------------------\n"
 
+
+printf "Sending valid json object with extra keys not supported\n\n"
+DATA='{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}, "garbage":"key value pair"}'
+curl -X POST --data "$DATA" ${HOST}/${END} --header ${HEADER}
+printf "\n-------------------------\n"
 

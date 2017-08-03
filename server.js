@@ -11,12 +11,17 @@ global.__base = path.join(__dirname + '/');
 /* config files */
 const server_config = require('./server.config.js')();
 const bunyan_config = require('./bunyan.config.js')(server_config.name);
+const content_config = require('./content.config.js');
 
 /* routes */
 const server_routes = require('./server.routes.js');
 
+/* content-types */
+const content = require('./lib/content_types')(content_config);
+
 const app = express();
 const log = bunyan.createLogger(bunyan_config);
+
 
 /* Third party extensions */
 app.use(helmet());
@@ -24,6 +29,7 @@ app.use(cors()); /*Remove for production*/
 
 /* Application specific routes */
 app.use(appendLog);
+app.use(content);
 app.use('', server_routes);
 app.use(notFoundHandler);
 app.use(errorHandler);

@@ -3,17 +3,23 @@ const router = express.Router();
 
 const jsonParser = require('body-parser').json();
 const validate = require(__base + 'lib/validation');
-const contentTypes = require(__base + 'lib/content_types');
 
-router.post('/', jsonParser, contentTypes, validate, 
+const TYPES = require('./content.js').getTypes;
+
+router.post('/', jsonParser, validate, 
   function(req, res) {
-    if(!req.body || !req.contentTypes || !req.validate){
+    if(!req.body || !req.validate){
       throw new Error('"req" object not configured properly');
     }
     /*get content of the endpoint for validation*/
-    let content = req.contentTypes.get(req.baseUrl);
-    let results = req.validate(content, req.baseUrl, req.body);
-    res.status(200).json(results);
+    let contentType = req.getContent(TYPES['contact-message']);
+    let results = req.validate(contentType, req.baseUrl, req.body);
+
+    if(results) {
+      /*errors found in POST body; send to client*/
+      return res.status(400).json(results);
+    }
+    res.status(200).send('OK');
 
   }, function(err, req, res, next){
     /*log the error*/
@@ -30,7 +36,7 @@ router.post('/', jsonParser, contentTypes, validate,
     }
 
     /*send error to client*/
-    res.status(status).json(message);
+    res.status(status).send(message);
   }); 
 
 module.exports = router;

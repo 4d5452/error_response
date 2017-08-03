@@ -1,4 +1,4 @@
 {
   "name": "content-types",
-  "main": "./content-types.middleware.js"
+  "main": "./index.js"
 }
