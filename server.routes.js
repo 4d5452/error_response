@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 
 const message = require(__base + 'routes/message');
 const content = require(__base + 'routes/content');

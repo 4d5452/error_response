@@ -1,5 +1,5 @@
 const types  = require(__base + 'lib/content_types/types.js');
-const common = require(__base + 'lib/content_types/common.js');
+const commonTypes = require(__base + 'lib/content_types/common.js').types;
 
 const TYPE_MAP = {
   'contact-message': 'vnd.ashetec.contact-message-v1+json'
@@ -25,13 +25,13 @@ const CONTACT_MESSAGE = {
       'email': {
         'type': types.getNonPrimitive('reference'),
         'properties': {
-          'contentType': common.getType('email')
+          'contentType': types.getType('email', commonTypes)
         }
       },// end: email
       'business': {
         'type': types.getNonPrimitive('reference'),
         'properties': {
-          'contentType': common.getType('business')
+          'contentType': types.getType('business', commonTypes)
         }
       },//end: business
       'message': {
@@ -46,8 +46,8 @@ const CONTACT_MESSAGE = {
 }// end: CONTACT_MESSAGE
 
 module.exports = {
-  getTypes: TYPE_MAP,
-  getContent: CONTACT_MESSAGE
+  content: CONTACT_MESSAGE,
+  types: TYPE_MAP
 }
 
 /*************************************************************/
