@@ -2,4 +2,4 @@
 
 ./message.sh > out
 
-diff ./base ./out
+diff -I "^Date" ./base ./out

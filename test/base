@@ -2,59 +2,246 @@ pinging server
 
 Hello 127.0.0.1
 -------------------------
+
 Sending bad json object
 
-Unexpected token = in JSON at position 7
--------------------------
-Causing 'Unexpected end of JSON input' during request with curl
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 50
+ETag: W/"32-z1nhk5PBgO6OR5WwsmZ4CVMchy4"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
 
-Unexpected end of JSON input
+{"err":"Unexpected token = in JSON at position 7"}
 -------------------------
-Sending request without 'name, email, or message' key(s)
 
-{"name":["name is required"],"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}
--------------------------
-Sending request without 'email or message' key(s)
+Causing "More bad JSON input" during request with curl
 
-{"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}
--------------------------
-Sending request without 'message' key(s)
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 50
+ETag: W/"32-B1PenaCN/ii9PKR6vrMcok6L3/I"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
 
-{"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}
+{"err":"Unexpected string in JSON at position 14"}
 -------------------------
+
+Sending request without "name, email, or message" key(s)
+
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 101
+ETag: W/"65-jWQXKLaiVqbWkNKjfzckQKUeAaU"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"name":["name is required"],"email":["email is required"],"message":["message is required"]}}
+-------------------------
+Sending request without "email or message" key(s)
+
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 73
+ETag: W/"49-P0kp1QdmEMfJHTUD/LjEHRDdU9U"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"email":["email is required"],"message":["message is required"]}}
+-------------------------
+
+Sending request without "message" key(s)
+
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 43
+ETag: W/"2b-R8D2+FfA7kZbS9cGiXEQQiSIkMY"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"message":["message is required"]}}
+-------------------------
+
 Sending request with name less than minLength (2)
 
-{"name":["name must have a minimum length of 2"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 57
+ETag: W/"39-B4THT72ZcJDOB3T/yjRtBUqnH84"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"name":["name must have a minimum length of 2"]}}
 -------------------------
+
 Sending request with name greater than maxLength (24)
 
-{"name":["name must not exceed a maximum length of 24"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 64
+ETag: W/"40-xZaC3vu7YDPuY8rmD0nGWaPhI5c"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"name":["name must not exceed a maximum length of 24"]}}
 -------------------------
+
 Sending request with name that fails regex
 
-{"name":["name is not valid"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 38
+ETag: W/"26-lcGtXwsAP90yvJ2z0UJFkAtFqfQ"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"name":["name is not valid"]}}
 -------------------------
+
 Sending request with name greater than maxLength and fails regex validation
 
-{"name":["name must not exceed a maximum length of 24","name is not valid"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}}}
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 84
+ETag: W/"54-9Qor01SS6Bd93i1mHyC+Zf5FSh8"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"name":["name must not exceed a maximum length of 24","name is not valid"]}}
 -------------------------
+
 Sending request with invalid objects at multiple levesl
 
-{"business":{"name":["name is required"],"address":{"street":["street must have a minimum length of 3"]}}}
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 162
+ETag: W/"a2-CYU/xmjjoI+L+FSZeTWkFbTR+nU"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"name":["name must have a minimum length of 2"],"business":{"name":["name is required"],"address":{"street":["street must have a minimum length of 3"]}}}}
 -------------------------
+
 Sending request without non-required key:value
 
-null
+HTTP/1.1 204 No Content
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
 -------------------------
+
 Sending request with invalid non-required key:value
 
-{"business":{"position":["position must have a minimum length of 3"]}}
+HTTP/1.1 400 Bad Request
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 78
+ETag: W/"4e-LDqNxLO+s6OMtn0ZMyrRnCvZg3A"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
+{"err":{"business":{"position":["position must have a minimum length of 3"]}}}
 -------------------------
+
 Sending valid json object
 
-null
+HTTP/1.1 204 No Content
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
 -------------------------
+
 Sending valid json object with extra keys not supported
 
-null
+HTTP/1.1 204 No Content
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
+Date: Sat, 05 Aug 2017 04:12:20 GMT
+Connection: keep-alive
+
 -------------------------
+

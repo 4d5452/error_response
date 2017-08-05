@@ -3,7 +3,6 @@ const bunyan = require('bunyan');
 const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
-const cors = require('cors');
 
 /* set a global path to server entry: server.js */
 global.__base = path.join(__dirname + '/');
@@ -25,7 +24,6 @@ const log = bunyan.createLogger(bunyan_config);
 
 /* Third party extensions */
 app.use(helmet());
-app.use(cors()); /*Remove for production*/
 
 /* Application specific routes */
 app.use(appendLog);

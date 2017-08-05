@@ -1,0 +1,57 @@
+#>>> => represents output to screen | <<< => represents input to curl | # is a comment
+
+>>>Sending bad json object\n\n
+<<<{"jack"="me"}
+>>>\n-------------------------\n\n
+
+>>>Causing "More bad JSON input" during request with curl\n\n
+<<<{"jack": "me"}" "
+>>>\n-------------------------\n\n
+
+>>>Sending request without "name, email, or message" key(s)\n\n
+<<<{"business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n
+
+>>>Sending request without "email or message" key(s)\n\n
+<<<{"name":"jack","business":{"name":"JUICE,LLC","address":{"street":"Someplace","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request without "message" key(s)\n\n
+<<<{"name":"jack","email":"jack@jungle","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request with name less than minLength (2)\n\n
+<<<{"name":"j","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request with name greater than maxLength (24)\n\n
+<<<{"name":"ABCDEFGHIJKLMNOPQRSTUVWXYZ","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request with name that fails regex\n\n
+<<<{"name":"*jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request with name greater than maxLength and fails regex validation\n\n
+<<<{"name":"*ABCDEFGHIJKLMNOPQRSTUVWXYZ","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request with invalid objects at multiple levesl\n\n
+<<<{"name":"j","email":"jack@jungle","message":"HI","business":{"address":{"street":"So","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request without non-required key:value\n\n
+<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending request with invalid non-required key:value\n\n
+<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","position":"o","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending valid json object\n\n
+<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>\n-------------------------\n\n
+
+>>>Sending valid json object with extra keys not supported\n\n
+<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}},"garbage":"key value pair"}
+>>>\n-------------------------\n\n
