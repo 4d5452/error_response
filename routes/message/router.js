@@ -34,13 +34,15 @@ router.post('/', jsonParser, validate,
     }
     /*get content of the endpoint for validation*/
     let content = req.getContent(acceptType);
-    let results = req.validate(content, acceptType, req.body);
+    let results = req.validate(acceptType, content, req.body);
 
     if(results) {
       /*errors found in POST body; send to client*/
       return res.status(200).json(req.errors.format(results));
     }
     res.status(204).send(null);
+    /*handle remaing route specific logic*/
+    //next()
 
   }, function(err, req, res, next){
 
