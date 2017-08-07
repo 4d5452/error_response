@@ -1,5 +1,7 @@
 #!/bin/bash
 
-./message.sh > out
+./testJSON.sh > out
+./testOPTIONS.sh >> out
+node ./testCLIENT.js >> out
 
-diff -I "^Date" ./base ./out
+diff -I "^[dD]ate" ./base ./out

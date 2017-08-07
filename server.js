@@ -14,9 +14,10 @@ const content_config = require('./content.config.js');
 
 /* routes */
 const server_routes = require('./server.routes.js');
-
 /* content-types */
 const content = require('./lib/content_types')(content_config);
+/* errors */
+const errors = require('./lib/errors');
 
 const app = express();
 const log = bunyan.createLogger(bunyan_config);
@@ -27,6 +28,7 @@ app.use(helmet());
 
 /* Application specific routes */
 app.use(appendLog);
+app.use(errors);
 app.use(content);
 app.use('', server_routes);
 app.use(notFoundHandler);
@@ -48,16 +50,18 @@ function appendLog(req, res, next) {
 
 /* 404 response handler */
 function notFoundHandler(req, res, next) {
-  req.log.warn("File not found (404)");
-  res.status(404).sendFile(path.join(__dirname, '404.html'));
+  let message = req.errors.get('404');
+  req.log.warn(message);
+  res.status(404).json(message);
 };
 
 /* Error Handler */
 function errorHandler(err, req, res, next) {
+  let message = req.errors.get('500');
   req.log.error(err);
   if(res.headersSent) {
     return next(err);
   }
-  res.status(500).sendFile(path.join(__dirname, '500.html'));
+  res.status(500).json(message);
 };
 

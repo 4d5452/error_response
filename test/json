@@ -10,7 +10,7 @@
 
 >>>Sending request without "name, email, or message" key(s)\n\n
 <<<{"business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
->>>\n-------------------------\n
+>>>\n-------------------------\n\n
 
 >>>Sending request without "email or message" key(s)\n\n
 <<<{"name":"jack","business":{"name":"JUICE,LLC","address":{"street":"Someplace","state":"VA"}}}
