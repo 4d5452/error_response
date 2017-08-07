@@ -4,8 +4,7 @@ const cors = require('cors');
 const jsonParser = require('body-parser').json();
 const validate = require(__base + 'lib/validation');
 
-const types = require('./content.js').types;
-const acceptType = types['contact-message'];
+const acceptType = require('./content.js').getRoot();
 
 const ACCEPTED_METHODS = [ 
   'POST', 'OPTIONS'

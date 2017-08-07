@@ -1,12 +1,17 @@
+const Definition = require(__base + 'lib/common/Definition.js');
 const types  = require(__base + 'lib/common/supported-types.js');
-const commonTypes = require(__base + 'lib/content_types/common.js').types;
+const common = require(__base + 'lib/common/common-definitions.js');
 
-const TYPE_MAP = {
+let ret = new Definition();
+
+const root = 'contact-message';
+
+const typeMap = {
   'contact-message': 'vnd.ashetec.contact-message-v1+json'
 }
 
-const CONTACT_MESSAGE = {
-  'vnd.ashetec.contact-message-v1+json': { //dataTypeID
+const content = {
+  'vnd.ashetec.contact-message-v1+json': {
     'type': types.getNonPrimitive('object'),
     'properties': {
       'name': {
@@ -25,13 +30,13 @@ const CONTACT_MESSAGE = {
       'email': {
         'type': types.getNonPrimitive('reference'),
         'properties': {
-          'contentType': types.getType('email', commonTypes)
+          'contentType': common.getType('email')
         }
       },// end: email
       'business': {
         'type': types.getNonPrimitive('reference'),
         'properties': {
-          'contentType': types.getType('business', commonTypes)
+          'contentType': common.getType('business')
         }
       },//end: business
       'message': {
@@ -42,12 +47,12 @@ const CONTACT_MESSAGE = {
         }
       }
     }
-  }// end: contact-message
-}// end: CONTACT_MESSAGE
-
-module.exports = {
-  content: CONTACT_MESSAGE,
-  types: TYPE_MAP
+  }// end: content
 }
+
+ret.add(typeMap, content);
+ret.setRoot(root);
+
+module.exports = ret;
 
 /*************************************************************/
