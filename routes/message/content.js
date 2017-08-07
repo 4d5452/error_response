@@ -1,4 +1,4 @@
-const types  = require(__base + 'lib/content_types/types.js');
+const types  = require(__base + 'lib/common/supported-types.js');
 const commonTypes = require(__base + 'lib/content_types/common.js').types;
 
 const TYPE_MAP = {
