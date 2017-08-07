@@ -15,7 +15,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 27
 ETag: W/"1b-i1NMxN8q+057J6NUGJQX38niaPY"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":"Bad Request (400)"}
@@ -33,7 +33,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 27
 ETag: W/"1b-i1NMxN8q+057J6NUGJQX38niaPY"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":"Bad Request (400)"}
@@ -51,7 +51,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 101
 ETag: W/"65-jWQXKLaiVqbWkNKjfzckQKUeAaU"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"name":["name is required"],"email":["email is required"],"message":["message is required"]}}
@@ -69,7 +69,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 73
 ETag: W/"49-P0kp1QdmEMfJHTUD/LjEHRDdU9U"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"email":["email is required"],"message":["message is required"]}}
@@ -87,7 +87,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 43
 ETag: W/"2b-R8D2+FfA7kZbS9cGiXEQQiSIkMY"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"message":["message is required"]}}
@@ -105,7 +105,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 57
 ETag: W/"39-B4THT72ZcJDOB3T/yjRtBUqnH84"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"name":["name must have a minimum length of 2"]}}
@@ -123,7 +123,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 64
 ETag: W/"40-xZaC3vu7YDPuY8rmD0nGWaPhI5c"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"name":["name must not exceed a maximum length of 24"]}}
@@ -141,7 +141,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 38
 ETag: W/"26-lcGtXwsAP90yvJ2z0UJFkAtFqfQ"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"name":["name is not valid"]}}
@@ -159,7 +159,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 84
 ETag: W/"54-9Qor01SS6Bd93i1mHyC+Zf5FSh8"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"name":["name must not exceed a maximum length of 24","name is not valid"]}}
@@ -177,7 +177,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 162
 ETag: W/"a2-CYU/xmjjoI+L+FSZeTWkFbTR+nU"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"name":["name must have a minimum length of 2"],"business":{"name":["name is required"],"address":{"street":["street must have a minimum length of 3"]}}}}
@@ -193,7 +193,7 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 -------------------------
@@ -210,7 +210,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 78
 ETag: W/"4e-LDqNxLO+s6OMtn0ZMyrRnCvZg3A"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"err":{"business":{"position":["position must have a minimum length of 3"]}}}
@@ -226,7 +226,7 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 -------------------------
@@ -241,7 +241,7 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 -------------------------
@@ -263,7 +263,7 @@ Vary: Access-Control-Request-Headers
 Content-Type: application/json; charset=utf-8
 Content-Length: 643
 ETag: W/"283-K/r/bJ+mxwMdLdWSHbfHD71A6As"
-Date: Mon, 07 Aug 2017 19:52:42 GMT
+Date: Mon, 07 Aug 2017 20:27:09 GMT
 Connection: keep-alive
 
 {"Accept":"vnd.ashetec.contact-message-v1+json","Content-Type":{"name":{"maxLength":24,"minLength":2,"regex":{"negate":true,"expression":"[^A-Za-z0-9_]","flag":"g"},"required":true,"type":"string"},"email":{"maxLength":254,"minLength":3,"required":true,"type":"string"},"business":{"name":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"position":{"maxLength":45,"minLength":3,"required":false,"type":"string"},"address":{"street":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"state":{"maxLength":2,"minLength":2,"required":true,"type":"string"}}},"message":{"maxLength":180,"required":true,"type":"string"}}}
@@ -278,7 +278,7 @@ x-xss-protection 1; mode=block
 content-type text/html; charset=utf-8
 content-length 15
 etag W/"f-kMjazB+ZWff5i4KKjNY9RAL4vSU"
-date Mon, 07 Aug 2017 19:52:42 GMT
+date Mon, 07 Aug 2017 20:27:09 GMT
 connection close
 
 Hello 127.0.0.1
@@ -297,7 +297,7 @@ vary Access-Control-Request-Headers
 content-type application/json; charset=utf-8
 content-length 643
 etag W/"283-K/r/bJ+mxwMdLdWSHbfHD71A6As"
-date Mon, 07 Aug 2017 19:52:42 GMT
+date Mon, 07 Aug 2017 20:27:09 GMT
 connection close
 
 {"Accept":"vnd.ashetec.contact-message-v1+json","Content-Type":{"name":{"maxLength":24,"minLength":2,"regex":{"negate":true,"expression":"[^A-Za-z0-9_]","flag":"g"},"required":true,"type":"string"},"email":{"maxLength":254,"minLength":3,"required":true,"type":"string"},"business":{"name":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"position":{"maxLength":45,"minLength":3,"required":false,"type":"string"},"address":{"street":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"state":{"maxLength":2,"minLength":2,"required":true,"type":"string"}}},"message":{"maxLength":180,"required":true,"type":"string"}}}
@@ -312,7 +312,7 @@ x-content-type-options nosniff
 x-xss-protection 1; mode=block
 access-control-allow-origin *
 etag W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-date Mon, 07 Aug 2017 19:52:42 GMT
+date Mon, 07 Aug 2017 20:27:09 GMT
 connection close
 
 --------------------------------
@@ -327,7 +327,7 @@ access-control-allow-origin *
 content-type application/json; charset=utf-8
 content-length 216
 etag W/"d8-7HLI6gck92mCDmvWACe5DkKiotg"
-date Mon, 07 Aug 2017 19:52:42 GMT
+date Mon, 07 Aug 2017 20:27:09 GMT
 connection close
 
 {"err":{"name":["name is required"],"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}}
