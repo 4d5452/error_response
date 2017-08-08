@@ -16,6 +16,8 @@ const content_config = require('./content.config.js');
 const server_routes = require('./server.routes.js');
 /* content-types */
 const content = require('./lib/content_types')(content_config);
+/* validation */
+const validation = require('./lib/validation');
 /* errors */
 const errors = require('./lib/errors');
 
@@ -30,6 +32,7 @@ app.use(helmet());
 app.use(appendLog);
 app.use(errors);
 app.use(content);
+app.use(validation);
 app.use('', server_routes);
 app.use(notFoundHandler);
 app.use(errorHandler);

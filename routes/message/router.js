@@ -2,7 +2,6 @@ const router = require('express').Router();
 const cors = require('cors'); 
 
 const jsonParser = require('body-parser').json();
-const validate = require(__base + 'lib/validation');
 
 const acceptType = require('./content.js').getRoot();
 
@@ -26,7 +25,7 @@ router.options('/',
       });
     });
 
-router.post('/', jsonParser, validate, 
+router.post('/', jsonParser, 
   function(req, res) {
     if(!req.body || !req.getContent || !req.validate){
       throw new Error('"req" object not configured properly');
