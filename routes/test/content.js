@@ -4,21 +4,22 @@ const common = require(__base + 'lib/common/common-definitions.js');
 
 let ret = new Definition();
 
-const root = 'contact-message';
+const root = 'test';
 
 const typeMap = {
-  'contact-message': 'vnd.ashetec.contact-message-v1+json'
+  'test': 'x.localhost.test-v1+json',
+  'business': 'x.business+json'
 }
 
 const content = {
-  'vnd.ashetec.contact-message-v1+json': {
+  'x.localhost.test-v1+json': {
     'type': types.getNonPrimitive('object'),
     'properties': {
-      'name': {
+      'string': {
         'type': types.getPrimitive('string'),
         'properties': {
-          'maxLength': 24,
-          'minLength': 2,
+          'maxLength': 10,
+          'minLength': 5,
           'regex': {
             'negate': true,
             'expression': '[^A-Za-z0-9_]',
@@ -36,18 +37,53 @@ const content = {
       'business': {
         'type': types.getNonPrimitive('reference'),
         'properties': {
-          'contentType': common.getType('business')
+          'contentType': typeMap['business']
         }
       },//end: business
-      'message': {
-        'type': types.getPrimitive('string'),
+      'number': {
+        'type': types.getPrimitive('number'),
         'properties': {
-          'maxLength': 180,
+          'maxValue': 10,
+          'minValue': 5,
+          'required': true
+        }
+      },
+      'boolean': {
+        'type': types.getPrimitive('boolean'),
+        'properties': {
+          'boolean': false,
           'required': true
         }
       }
     }
-  }// end: content
+  },// end: test
+  'x.business+json': {
+    'type': types.getNonPrimitive('object'),
+    'properties': {
+      'name': {
+        'type': types.getPrimitive('string'),
+        'properties': {
+          'maxLength': 10,
+          'minLength': 5,
+          'required': true
+        }
+      },
+      'address': {
+        'type': types.getNonPrimitive('reference'),
+        'properties': {
+          'contentType': common.getType('address')
+        }
+      },
+      'position': {
+        'type': types.getPrimitive('string'),
+        'properties': {
+          'maxLength': 10,
+          'minLength': 5,
+          'required': false
+        }
+      }
+    }
+  }
 }
 
 ret.add(typeMap, content);

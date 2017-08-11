@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
-const message = require(__base + 'routes/message');
+const test = require(__base + 'routes/test');
 
 router.get('/', function (req, res) {
   req.log.info("Server Ping");
   res.send(`Hello ${req.ip}`);
 });
 
-router.use('/contact/message', message);
+router.use('/test', test);
 
 module.exports = router;
 

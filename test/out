@@ -15,7 +15,7 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 27
 ETag: W/"1b-i1NMxN8q+057J6NUGJQX38niaPY"
-Date: Tue, 08 Aug 2017 03:21:16 GMT
+Date: Fri, 11 Aug 2017 05:48:33 GMT
 Connection: keep-alive
 
 {"err":"Bad Request (400)"}
@@ -33,13 +33,13 @@ Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 27
 ETag: W/"1b-i1NMxN8q+057J6NUGJQX38niaPY"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Date: Fri, 11 Aug 2017 05:48:33 GMT
 Connection: keep-alive
 
 {"err":"Bad Request (400)"}
 -------------------------
 
-Sending request without "name, email, or message" key(s)
+Sending request without required key(s)
 
 HTTP/1.1 200 OK
 X-DNS-Prefetch-Control: off
@@ -49,15 +49,51 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 101
-ETag: W/"65-jWQXKLaiVqbWkNKjfzckQKUeAaU"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Content-Length: 252
+ETag: W/"fc-WGY1DSqSgPBQ/0QewtrElhHWnoE"
+Date: Fri, 11 Aug 2017 05:48:33 GMT
 Connection: keep-alive
 
-{"err":{"name":["name is required"],"email":["email is required"],"message":["message is required"]}}
+{"err":{"string":["string is required"],"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"number":["number is required"],"boolean":["boolean is required"]}}
 -------------------------
 
-Sending request without "email or message" key(s)
+Sending request with values less than minLength and minValue (5)
+
+HTTP/1.1 200 OK
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 233
+ETag: W/"e9-8nfgSaCqqrGFHZ3QMfvIYp7NcUY"
+Date: Fri, 11 Aug 2017 05:48:33 GMT
+Connection: keep-alive
+
+{"err":{"string":["string must have a minimum length of 5"],"business":{"name":["name must have a minimum length of 5"],"position":["position must have a minimum length of 5"]},"number":["number must be greater than or equal to 5"]}}
+-------------------------
+
+Sending request with values greater than maxLength and maxValue (10)
+
+HTTP/1.1 200 OK
+X-DNS-Prefetch-Control: off
+X-Frame-Options: SAMEORIGIN
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Access-Control-Allow-Origin: *
+Content-Type: application/json; charset=utf-8
+Content-Length: 252
+ETag: W/"fc-t/SgaqacgvNz6y1zmxEVZoXAtGc"
+Date: Fri, 11 Aug 2017 05:48:33 GMT
+Connection: keep-alive
+
+{"err":{"string":["string must not exceed a maximum length of 10"],"business":{"name":["name must not exceed a maximum length of 10"],"position":["position must not exceed a maximum length of 10"]},"number":["number must be less than or equal to 10"]}}
+-------------------------
+
+Sending request with values that fail regex
 
 HTTP/1.1 200 OK
 X-DNS-Prefetch-Control: off
@@ -68,14 +104,14 @@ X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 73
-ETag: W/"49-P0kp1QdmEMfJHTUD/LjEHRDdU9U"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+ETag: W/"49-UadoBwMSffzDu7YX+vESc1w8juk"
+Date: Fri, 11 Aug 2017 05:48:33 GMT
 Connection: keep-alive
 
-{"err":{"email":["email is required"],"message":["message is required"]}}
+{"err":{"string":["string is not valid"],"email":["email is not valid"]}}
 -------------------------
 
-Sending request without "message" key(s)
+Sending request with failing boolean value
 
 HTTP/1.1 200 OK
 X-DNS-Prefetch-Control: off
@@ -85,15 +121,15 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 43
-ETag: W/"2b-R8D2+FfA7kZbS9cGiXEQQiSIkMY"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Content-Length: 68
+ETag: W/"44-ZxSbFan3qoPGHMVejCUqYipgWBA"
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
-{"err":{"message":["message is required"]}}
+{"err":{"boolean":["boolean was expected to be false and was NOT"]}}
 -------------------------
 
-Sending request with name less than minLength (2)
+Sending request with values less than minLength that fail regex validation
 
 HTTP/1.1 200 OK
 X-DNS-Prefetch-Control: off
@@ -103,15 +139,15 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 57
-ETag: W/"39-B4THT72ZcJDOB3T/yjRtBUqnH84"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Content-Length: 154
+ETag: W/"9a-DIJWhdb8h9617a2z6gr4uMBih74"
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
-{"err":{"name":["name must have a minimum length of 2"]}}
+{"err":{"string":["string must have a minimum length of 5","string is not valid"],"email":["email must have a minimum length of 3","email is not valid"]}}
 -------------------------
 
-Sending request with name greater than maxLength (24)
+Sending request with invalid objects at multiple levels
 
 HTTP/1.1 200 OK
 X-DNS-Prefetch-Control: off
@@ -121,66 +157,12 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
-Content-Length: 64
-ETag: W/"40-xZaC3vu7YDPuY8rmD0nGWaPhI5c"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Content-Length: 195
+ETag: W/"c3-xsveFyHphyfYWOzk77hjXvEyqOw"
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
-{"err":{"name":["name must not exceed a maximum length of 24"]}}
--------------------------
-
-Sending request with name that fails regex
-
-HTTP/1.1 200 OK
-X-DNS-Prefetch-Control: off
-X-Frame-Options: SAMEORIGIN
-X-Download-Options: noopen
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Access-Control-Allow-Origin: *
-Content-Type: application/json; charset=utf-8
-Content-Length: 38
-ETag: W/"26-lcGtXwsAP90yvJ2z0UJFkAtFqfQ"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
-Connection: keep-alive
-
-{"err":{"name":["name is not valid"]}}
--------------------------
-
-Sending request with name greater than maxLength and fails regex validation
-
-HTTP/1.1 200 OK
-X-DNS-Prefetch-Control: off
-X-Frame-Options: SAMEORIGIN
-X-Download-Options: noopen
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Access-Control-Allow-Origin: *
-Content-Type: application/json; charset=utf-8
-Content-Length: 84
-ETag: W/"54-9Qor01SS6Bd93i1mHyC+Zf5FSh8"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
-Connection: keep-alive
-
-{"err":{"name":["name must not exceed a maximum length of 24","name is not valid"]}}
--------------------------
-
-Sending request with invalid objects at multiple levesl
-
-HTTP/1.1 200 OK
-X-DNS-Prefetch-Control: off
-X-Frame-Options: SAMEORIGIN
-X-Download-Options: noopen
-X-Content-Type-Options: nosniff
-X-XSS-Protection: 1; mode=block
-Access-Control-Allow-Origin: *
-Content-Type: application/json; charset=utf-8
-Content-Length: 162
-ETag: W/"a2-CYU/xmjjoI+L+FSZeTWkFbTR+nU"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
-Connection: keep-alive
-
-{"err":{"name":["name must have a minimum length of 2"],"business":{"name":["name is required"],"address":{"street":["street must have a minimum length of 3"]}}}}
+{"err":{"string":["string must have a minimum length of 5","string is not valid"],"email":["email is not valid"],"business":{"address":{"state":["state must not exceed a maximum length of 2"]}}}}
 -------------------------
 
 Sending request without non-required key:value
@@ -193,7 +175,7 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
 -------------------------
@@ -209,11 +191,11 @@ X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 Content-Type: application/json; charset=utf-8
 Content-Length: 78
-ETag: W/"4e-LDqNxLO+s6OMtn0ZMyrRnCvZg3A"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+ETag: W/"4e-dKiSoWBMarIiJ2QO3q3zECJbDiQ"
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
-{"err":{"business":{"position":["position must have a minimum length of 3"]}}}
+{"err":{"business":{"position":["position must have a minimum length of 5"]}}}
 -------------------------
 
 Sending valid json object
@@ -226,7 +208,7 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
 -------------------------
@@ -241,7 +223,7 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Access-Control-Allow-Origin: *
 ETag: W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
 -------------------------
@@ -261,12 +243,12 @@ Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST,OPTIONS
 Vary: Access-Control-Request-Headers
 Content-Type: application/json; charset=utf-8
-Content-Length: 643
-ETag: W/"283-K/r/bJ+mxwMdLdWSHbfHD71A6As"
-Date: Tue, 08 Aug 2017 03:21:17 GMT
+Content-Length: 841
+ETag: W/"349-o7JsaNIvTQKcePM7LyS8SN240Lk"
+Date: Fri, 11 Aug 2017 05:48:34 GMT
 Connection: keep-alive
 
-{"Accept":"vnd.ashetec.contact-message-v1+json","Content-Type":{"name":{"maxLength":24,"minLength":2,"regex":{"negate":true,"expression":"[^A-Za-z0-9_]","flag":"g"},"required":true,"type":"string"},"email":{"maxLength":254,"minLength":3,"required":true,"type":"string"},"business":{"name":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"position":{"maxLength":45,"minLength":3,"required":false,"type":"string"},"address":{"street":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"state":{"maxLength":2,"minLength":2,"required":true,"type":"string"}}},"message":{"maxLength":180,"required":true,"type":"string"}}}
+{"data":{"Accept":"x.localhost.test-v1+json","Content-Type":{"string":{"maxLength":10,"minLength":5,"regex":{"negate":true,"expression":"[^A-Za-z0-9_]","flag":"g"},"required":true,"type":"string"},"email":{"maxLength":254,"minLength":3,"regex":{"negate":false,"expression":"^[a-zA-Z0-9_+&*-]+(?:.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+.)+[a-zA-Z]{2,7}$","flag":"g"},"required":true,"type":"string"},"business":{"name":{"maxLength":10,"minLength":5,"required":true,"type":"string"},"address":{"street":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"state":{"maxLength":2,"minLength":2,"required":true,"type":"string"}},"position":{"maxLength":10,"minLength":5,"required":false,"type":"string"}},"number":{"maxValue":10,"minValue":5,"required":true,"type":"number"},"boolean":{"boolean":false,"required":true,"type":"boolean"}}}}
 -------------------------
 
 STATUS: 200
@@ -278,7 +260,7 @@ x-xss-protection 1; mode=block
 content-type text/html; charset=utf-8
 content-length 15
 etag W/"f-kMjazB+ZWff5i4KKjNY9RAL4vSU"
-date Tue, 08 Aug 2017 03:21:17 GMT
+date Fri, 11 Aug 2017 05:48:34 GMT
 connection close
 
 Hello 127.0.0.1
@@ -295,12 +277,12 @@ access-control-allow-origin *
 access-control-allow-methods POST,OPTIONS
 vary Access-Control-Request-Headers
 content-type application/json; charset=utf-8
-content-length 643
-etag W/"283-K/r/bJ+mxwMdLdWSHbfHD71A6As"
-date Tue, 08 Aug 2017 03:21:17 GMT
+content-length 841
+etag W/"349-o7JsaNIvTQKcePM7LyS8SN240Lk"
+date Fri, 11 Aug 2017 05:48:34 GMT
 connection close
 
-{"Accept":"vnd.ashetec.contact-message-v1+json","Content-Type":{"name":{"maxLength":24,"minLength":2,"regex":{"negate":true,"expression":"[^A-Za-z0-9_]","flag":"g"},"required":true,"type":"string"},"email":{"maxLength":254,"minLength":3,"required":true,"type":"string"},"business":{"name":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"position":{"maxLength":45,"minLength":3,"required":false,"type":"string"},"address":{"street":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"state":{"maxLength":2,"minLength":2,"required":true,"type":"string"}}},"message":{"maxLength":180,"required":true,"type":"string"}}}
+{"data":{"Accept":"x.localhost.test-v1+json","Content-Type":{"string":{"maxLength":10,"minLength":5,"regex":{"negate":true,"expression":"[^A-Za-z0-9_]","flag":"g"},"required":true,"type":"string"},"email":{"maxLength":254,"minLength":3,"regex":{"negate":false,"expression":"^[a-zA-Z0-9_+&*-]+(?:.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+.)+[a-zA-Z]{2,7}$","flag":"g"},"required":true,"type":"string"},"business":{"name":{"maxLength":10,"minLength":5,"required":true,"type":"string"},"address":{"street":{"maxLength":45,"minLength":3,"required":true,"type":"string"},"state":{"maxLength":2,"minLength":2,"required":true,"type":"string"}},"position":{"maxLength":10,"minLength":5,"required":false,"type":"string"}},"number":{"maxValue":10,"minValue":5,"required":true,"type":"number"},"boolean":{"boolean":false,"required":true,"type":"boolean"}}}}
 
 --------------------------------
 
@@ -312,7 +294,7 @@ x-content-type-options nosniff
 x-xss-protection 1; mode=block
 access-control-allow-origin *
 etag W/"0-2jmj7l5rSw0yVb/vlWAYkK/YBwk"
-date Tue, 08 Aug 2017 03:21:17 GMT
+date Fri, 11 Aug 2017 05:48:34 GMT
 connection close
 
 --------------------------------
@@ -325,12 +307,12 @@ x-content-type-options nosniff
 x-xss-protection 1; mode=block
 access-control-allow-origin *
 content-type application/json; charset=utf-8
-content-length 216
-etag W/"d8-7HLI6gck92mCDmvWACe5DkKiotg"
-date Tue, 08 Aug 2017 03:21:17 GMT
+content-length 252
+etag W/"fc-WGY1DSqSgPBQ/0QewtrElhHWnoE"
+date Fri, 11 Aug 2017 05:48:34 GMT
 connection close
 
-{"err":{"name":["name is required"],"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"message":["message is required"]}}
+{"err":{"string":["string is required"],"email":["email is required"],"business":{"name":["name is required"],"address":{"street":["street is required"],"state":["state is required"]}},"number":["number is required"],"boolean":["boolean is required"]}}
 
 --------------------------------
 

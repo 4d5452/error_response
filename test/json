@@ -8,50 +8,46 @@
 <<<{"jack": "me"}" "
 >>>\n-------------------------\n\n
 
->>>Sending request without "name, email, or message" key(s)\n\n
-<<<{"business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>Sending request without required key(s)\n\n
+<<<{}
 >>>\n-------------------------\n\n
 
->>>Sending request without "email or message" key(s)\n\n
-<<<{"name":"jack","business":{"name":"JUICE,LLC","address":{"street":"Someplace","state":"VA"}}}
+>>>Sending request with values less than minLength and minValue (5)\n\n
+<<<{"string": "tiny", "email": "sample@stockholm.com", "business": {"name": "tiny", "address": {"street": "Someplace USA", "state": "VA"}, "position": "tiny"}, "number": 1, "boolean": false}
 >>>\n-------------------------\n\n
 
->>>Sending request without "message" key(s)\n\n
-<<<{"name":"jack","email":"jack@jungle","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>Sending request with values greater than maxLength and maxValue (10)\n\n
+<<<{"string": "verybigname", "email": "sample@stockholm.com", "business": {"name": "verybigname", "address": {"street": "Someplace USA", "state": "VA"}, "position": "verybigname"}, "number": 11, "boolean": false}
 >>>\n-------------------------\n\n
 
->>>Sending request with name less than minLength (2)\n\n
-<<<{"name":"j","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>Sending request with values that fail regex\n\n
+<<<{"string": "normal*", "email": "!sample@stockholm.com", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "VA"}, "position": "normal"}, "number": 7, "boolean": false}
 >>>\n-------------------------\n\n
 
->>>Sending request with name greater than maxLength (24)\n\n
-<<<{"name":"ABCDEFGHIJKLMNOPQRSTUVWXYZ","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>Sending request with failing boolean value\n\n
+<<<{"string": "normal", "email": "sample@stockholm.com", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "VA"}, "position": "normal"}, "number": 7, "boolean": true}
 >>>\n-------------------------\n\n
 
->>>Sending request with name that fails regex\n\n
-<<<{"name":"*jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+>>>Sending request with values less than  minLength that fail regex validation\n\n
+<<<{"string": "tny*", "email": "!@", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "VA"}, "position": "normal"}, "number": 7, "boolean": false}
 >>>\n-------------------------\n\n
 
->>>Sending request with name greater than maxLength and fails regex validation\n\n
-<<<{"name":"*ABCDEFGHIJKLMNOPQRSTUVWXYZ","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
->>>\n-------------------------\n\n
-
->>>Sending request with invalid objects at multiple levesl\n\n
-<<<{"name":"j","email":"jack@jungle","message":"HI","business":{"address":{"street":"So","state":"VA"}}}
+>>>Sending request with invalid objects at multiple levels\n\n
+<<<{"string": "tny*", "email": "j@j", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "USA"}, "position": "normal"}, "number": 7, "boolean": false}
 >>>\n-------------------------\n\n
 
 >>>Sending request without non-required key:value\n\n
-<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+<<<{"string": "normal", "email": "j@j.com", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "SA"}}, "number": 7, "boolean": false}
 >>>\n-------------------------\n\n
 
 >>>Sending request with invalid non-required key:value\n\n
-<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","position":"o","address":{"street":"Someplace USA","state":"VA"}}}
+<<<{"string": "normal", "email": "j@j.com", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "SA"}, "position": "tiny"}, "number": 7, "boolean": false}
 >>>\n-------------------------\n\n
 
 >>>Sending valid json object\n\n
-<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}}}
+<<<{"string": "normal", "email": "j@j.com", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "SA"}, "position": "normal"}, "number": 7, "boolean": false}
 >>>\n-------------------------\n\n
 
 >>>Sending valid json object with extra keys not supported\n\n
-<<<{"name":"jack","email":"jack@jungle","message":"HI","business":{"name":"JUICE, LLC","address":{"street":"Someplace USA","state":"VA"}},"garbage":"key value pair"}
+<<<{"string": "normal", "email": "j@j.com", "business": {"name": "normal", "address": {"street": "Someplace USA", "state": "SA"}, "position": "normal"}, "number": 7, "boolean": false, "garbage": "string"}
 >>>\n-------------------------\n\n

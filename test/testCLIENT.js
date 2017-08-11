@@ -1,16 +1,19 @@
 const http = require('http');
 
 const validData = JSON.stringify({
-  "name":"jack",
-  "email":"jack@jungle",
+  "string":"normal",
+  "email":"jack@jungle.com",
   "message":"HI",
   "business":{
     "name":"JUICE, LLC",
     "address":{
       "street":"Someplace USA",
       "state":"VA"
-    }
+    },
+    "position": "SALES"
   },
+  "number": 7,
+  "boolean": false,
   "garbage":"key value pair"
 });
 const invalidData = JSON.stringify({
@@ -29,11 +32,11 @@ const testOptions = [
     'method': 'GET',
     'message': 'Server PING'
   },{
-    'path': '/contact/message',
+    'path': '/test',
     'method': 'OPTIONS',
     'message': 'Request OPTIONS from server'
   },{
-    'path': '/contact/message',
+    'path': '/test',
     'method': 'POST',
     'headers': {
       'Content-Type': 'application/json',
@@ -42,7 +45,7 @@ const testOptions = [
     'data': validData,
     'message': 'Sending valid POST request'
   },{
-    'path': '/contact/message',
+    'path': '/test',
     'method': 'POST',
     'headers': {
       'Content-Type': 'application/json',

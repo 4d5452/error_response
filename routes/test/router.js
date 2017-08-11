@@ -19,9 +19,11 @@ router.use(cors(corsOptions));
 router.options('/',
     function(req, res) {
       let content = req.getContent(acceptType);
-      res.status(200).json({ 
-        'Accept': acceptType,
-        'Content-Type': content
+      res.status(200).json({
+        'data': {
+          'Accept': acceptType,
+          'Content-Type': content
+        }
       });
     });
 
