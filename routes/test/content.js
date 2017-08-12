@@ -1,5 +1,4 @@
 const Definition = require(__base + 'lib/common/Definition.js');
-const types  = require(__base + 'lib/common/supported-types.js');
 const common = require(__base + 'lib/common/common-definitions.js');
 
 let ret = new Definition();
@@ -13,10 +12,10 @@ const typeMap = {
 
 const content = {
   'x.localhost.test-v1+json': {
-    'type': types.getNonPrimitive('object'),
+    'type': 'object',
     'properties': {
       'string': {
-        'type': types.getPrimitive('string'),
+        'type': 'string',
         'properties': {
           'maxLength': 10,
           'minLength': 5,
@@ -29,19 +28,19 @@ const content = {
         }
       },// end: name
       'email': {
-        'type': types.getNonPrimitive('reference'),
+        'type': 'reference',
         'properties': {
           'contentType': common.getType('email')
         }
       },// end: email
       'business': {
-        'type': types.getNonPrimitive('reference'),
+        'type': 'reference',
         'properties': {
           'contentType': typeMap['business']
         }
       },//end: business
       'number': {
-        'type': types.getPrimitive('number'),
+        'type': 'number',
         'properties': {
           'maxValue': 10,
           'minValue': 5,
@@ -49,7 +48,7 @@ const content = {
         }
       },
       'boolean': {
-        'type': types.getPrimitive('boolean'),
+        'type': 'boolean',
         'properties': {
           'boolean': false,
           'required': true
@@ -58,10 +57,10 @@ const content = {
     }
   },// end: test
   'x.business+json': {
-    'type': types.getNonPrimitive('object'),
+    'type': 'object',
     'properties': {
       'name': {
-        'type': types.getPrimitive('string'),
+        'type': 'string',
         'properties': {
           'maxLength': 10,
           'minLength': 5,
@@ -69,13 +68,13 @@ const content = {
         }
       },
       'address': {
-        'type': types.getNonPrimitive('reference'),
+        'type':'reference',
         'properties': {
           'contentType': common.getType('address')
         }
       },
       'position': {
-        'type': types.getPrimitive('string'),
+        'type': 'string',
         'properties': {
           'maxLength': 10,
           'minLength': 5,
